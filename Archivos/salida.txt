@@ -1,0 +1,19 @@
+Ingrese el cliente a consultar: Nyota Uhura
+Cliente         Tipo Prod.  SKU       Producto         Costo Fijo Costo Direc. Presupuestado
+Nyota Uhura     Mecatrónico MTRN00022 Dron                5748.50  17398.80    24403.00
+Ganancia total: 1255.70
+
+Ingrese el cliente a consultar: Don Ramon
+Cliente         Tipo Prod.  SKU       Producto         Costo Fijo Costo Direc. Presupuestado
+Don Ramon       Electrónico ELTR003   Tablet              3532.50  14279.20    22289.00
+Don Ramon       Mecatrónico MTRN00023 Robot Aspirador     5952.00  10574.40    17956.00
+Ganancia total: 5906.90
+
+Ingrese el cliente a consultar: Taller el Trio
+Cliente         Tipo Prod.  SKU       Producto         Costo Fijo Costo Direc. Presupuestado
+Taller el Trio  Electrónico ELTR001   Celular             5996.00  10436.60    17642.00
+Taller el Trio  Electrónico ELTR002   Laptop              5056.00  14494.60    24287.00
+Taller el Trio  Mecánico    MEC004V2  Bicicleta           4343.75  16849.20    25897.00
+Taller el Trio  Mecatrónico MTRN00022 Dron                5748.50  12447.60    19602.00
+Ganancia total: 12055.75
+
