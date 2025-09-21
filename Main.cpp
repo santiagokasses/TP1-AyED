@@ -47,6 +47,55 @@ void mostrarReparaciones(Reparaciones vec[], int dim) {
              << setw(15) << fixed << setprecision(2) << vec[i].Presupuestado << endl;
     }
 }
+
+// ==================== BUSQUEDA DE CLIENTE ==================== 
+void buscarCliente(Reparaciones reparaciones[], int dimR, Productos productos[], int dimP) {
+    string nombre;
+    cout << "\nIngrese nombre de cliente (EOF para salir):" << endl;
+    while (true) {
+        cout << "> ";
+        if (!getline(cin, nombre)) break; // termina con EOF
+        if (nombre.empty()) continue;
+
+        bool encontrado = false;
+
+        cout << left;
+        cout << setw(15) << "Cliente"
+             << setw(19) << "Tipo Producto"
+             << setw(12) << "SKU"
+             << setw(20) << "Producto"
+             << setw(20) << "Costo Directo"
+             << setw(20) << "Presupuestado" << endl;
+
+        for (int i = 0; i < dimR; i++) {
+            if (nombre == reparaciones[i].Cliente) {
+                encontrado = true;
+
+                // ==================== BUSCAR PRODUCTOS POR SKU ====================
+                string descProd = "<<No encontrado>>";
+                for (int j = 0; j < dimP; j++) {
+                    if (string(productos[j].SKU) == string(reparaciones[i].SKU)) {
+                        descProd = productos[j].Descripcion;
+                        break;
+                    }
+                }
+
+                cout << setw(15) << reparaciones[i].Cliente
+                     << setw(20) << tipos[reparaciones[i].Tproducto]
+                     << setw(12) << reparaciones[i].SKU
+                     << setw(20) << descProd
+                     << setw(20) << setprecision(2) << reparaciones[i].CostoDirecto
+                     << setw(20) << setprecision(2) << reparaciones[i].Presupuestado
+                     << endl;
+            }
+        }
+
+        if (!encontrado) {
+            cout << "No se encontraron reparaciones para el cliente: " << nombre << "\n";
+        }
+    }
+}
+
 int main() {
     int dimProductos = 10;
     Productos productos[dimProductos];
@@ -61,6 +110,7 @@ int main() {
         archiProd.read(reinterpret_cast<char*>(&productos[i].CostoFijo), 4); 
     }
     archiProd.close();
+
     // ==================== LEER REPARACIONES ====================
     ifstream archiRep("reparaciones.bin", ios::binary);
     archiRep.seekg(0, ios::end);
@@ -75,8 +125,14 @@ int main() {
         reparaciones[i].Cliente[15] = reparaciones[i].SKU[10] = '\0';
     }
     archiRep.close();
+
+    // MOSTRAR DATOS 
     mostrarProductos(productos, dimProductos);
     cout << "-----------------------------------------------" <<endl;
     mostrarReparaciones(reparaciones, dimReparaciones);
+
+    //  BUSQUEDA 
+    buscarCliente(reparaciones, dimReparaciones, productos, dimProductos);
+
     return 0;
 }
