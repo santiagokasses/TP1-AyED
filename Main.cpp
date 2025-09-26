@@ -111,7 +111,7 @@ void buscarCliente(Reparaciones reparaciones[], int dimR, Productos productos[],
              << setw(20) << "Producto"
              << setw(15) << "Costo Fijo"
              << setw(15) << "Costo Directo"
-             << setw(15) << "Presupuestado"
+             //<< setw(15) << "Presupuestado"
              << setw(15) << "Ganancia" << endl;
 
         float totalPresupuestado = 0.0;
@@ -138,13 +138,12 @@ void buscarCliente(Reparaciones reparaciones[], int dimR, Productos productos[],
                  << setw(20) << descProd
                  << setw(15) << fixed << setprecision(2) << costoFijo
                  << setw(15) << reparaciones[i].CostoDirecto
-                 << setw(15) << reparaciones[i].Presupuestado
+                 //<< setw(15) << reparaciones[i].Presupuestado
                  << setw(15) << ganancia << endl;
         }
 
-        cout << "\nTotal PRESUPUESTADO a " << nombre << ": "
-             << fixed << setprecision(2) << totalPresupuestado << endl;
-        cout << "Ganancia TOTAL con " << nombre << ": "
+        //cout << "\nTotal PRESUPUESTADO a " << nombre << ": " << fixed << setprecision(2) << totalPresupuestado << endl;
+        cout << "\nGanancia TOTAL con " << nombre << ": "
              << fixed << setprecision(2) << gananciaTotal << "\n\n";
     }
 }
